@@ -46,7 +46,6 @@ Package.onUse(function (api) {
 
   // server only files
   api.addFiles([
-    'server/mailSettings.js'
     // ,'server/fixture.js'
   ], server);
 

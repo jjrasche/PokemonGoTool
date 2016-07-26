@@ -23,7 +23,7 @@ Package.onUse(function (api) {
   api.addFiles([
     'lib/user/user.js'
     ,'lib/user/meteorMethods.js'
-    ,'server/fixture.js'
+    ,'lib/user/fixture.js'
   ], both);
 
 
