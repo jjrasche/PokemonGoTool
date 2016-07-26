@@ -1,7 +1,7 @@
 Router.configure({
-  layoutTemplate: 'ApplicationLayout',
-  loadingTemplate: 'loading',
-  notFoundTemplate: 'notFound'
+	layoutTemplate: 'ApplicationLayout',
+	loadingTemplate: 'loading',
+	notFoundTemplate: 'notFound'
 });
 
 UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase.Router', {requireLogin : 

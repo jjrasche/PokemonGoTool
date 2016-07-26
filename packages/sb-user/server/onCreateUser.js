@@ -1,5 +1,5 @@
 if (Meteor.isServer) {
-  Meteor.startup(function () {  
+	Meteor.startup(function () {  
 	Accounts.onCreateUser(function(options, user) {
 	    user.profile = options.profile || {};
 
@@ -7,6 +7,6 @@ if (Meteor.isServer) {
 
 	    return user
 	})
-  });
+	});
 }
 

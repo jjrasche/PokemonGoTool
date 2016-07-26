@@ -2,15 +2,15 @@ UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase', {debug: false});
 
 UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase', {handleServerError : 
 	function handleServerError(err) {
-    	console.log("handleServerError: ", err);
-    	if (Meteor.isClient) alert(err);
-    }
+		console.log("handleServerError: ", err);
+		if (Meteor.isClient) alert(err);
+	}
 });
 
 UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase', {handleClientError : 
 	function handleClientError(err) {
-    	console.log("handleClientError: ", err);
-    }
+		console.log("handleClientError: ", err);
+	}
 });
 
 /* 
