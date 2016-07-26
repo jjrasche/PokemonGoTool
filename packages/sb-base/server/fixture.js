@@ -6,6 +6,6 @@ UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase.fixture', {randomN
 
 UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase.fixture', {randomBool : 
 	function randomBool() {
-		return Math.floor(Math.random()*2)? true : false;
+		return Math.floor(Math.random()*2) ? true : false;
 	}
 });

@@ -7,7 +7,7 @@ replace:
 	<li>UniqueAppAbbrevUpperCase with a short abbreviation of your app e.g. DP</li>
 	<li>UniqueAppAbbrevLowerCase with same shorthand but lower case e.g. dp</li>
 	<li>meteorUsername with your meteor username </li>
-	<li>run script "renameFolderPrefix.sh" to rename the folder prefix from sb to UniqueAppAbbrevLowerCase</li>
+	<li>run script 'renameFolderPrefix.sh' to rename the folder prefix from sb to UniqueAppAbbrevLowerCase</li>
 </ol>
 
 

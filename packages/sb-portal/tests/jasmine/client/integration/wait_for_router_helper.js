@@ -1,36 +1,36 @@
-(function (Meteor, Tracker, Router) {
+(function(Meteor, Tracker, Router) {
 	var isRouterReady = false;
 	var callbacks = [];
 
-	window.waitForRouter = function (callback) {
+	window.waitForRouter = function(callback) {
 	if (isRouterReady) {
-	  callback();
+		callback();
 	} else {
-	  callbacks.push(callback);
+		callbacks.push(callback);
 	}
 	};
 
-	Router.onAfterAction(function () {
+	Router.onAfterAction(function() {
 	if (!isRouterReady && this.ready()) {
-	  Tracker.afterFlush(function () {
-	    isRouterReady = true;
-	    callbacks.forEach(function (callback) {
-	      callback();
-	    });
-	    callbacks = []
-	  })
+		Tracker.afterFlush(function() {
+			isRouterReady = true;
+			callbacks.forEach(function(callback) {
+				callback();
+			});
+			callbacks = []
+		})
 	}
 	});
 
-	Router.onRerun(function () {
-	isRouterReady = false;
-	this.next();
+	Router.onRerun(function() {
+		isRouterReady = false;
+		this.next();
 	});
 
-	Router.onStop(function () {
-	isRouterReady = false;
-	if (this.next) {
-	  this.next();
-	}
+	Router.onStop(function() {
+		isRouterReady = false;
+		if (this.next) {
+			this.next();
+		}
 	});
 })(Meteor, Tracker, Router);

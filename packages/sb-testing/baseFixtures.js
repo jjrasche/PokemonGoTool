@@ -1,5 +1,5 @@
 Meteor.methods({
-	initializeFixutres: function initializeFixutres() {
+	initializeFixutres : function initializeFixutres() {
 		var tester; tester2;
 		// create users
 		if (!UniqueAppAbbrevUpperCase.User.find().count()) {	
