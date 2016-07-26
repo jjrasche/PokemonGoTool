@@ -1,18 +1,22 @@
 # Meteor package-only project template
 
+<h2>Actions</h2>
 replace:
-UniqueAppName with your full app name e.g. DogPark
-UniqueAppAbbrevUpperCase with a short abbreviation of your app e.g. DP
-UniqueAppAbbrevLowerCase with same shorthand but lower case e.g. dp
-meteorUsername with your meteor username 
+<ol>
+	<li>UniqueAppName with your full app name e.g. DogPark</li>
+	<li>UniqueAppAbbrevUpperCase with a short abbreviation of your app e.g. DP</li>
+	<li>UniqueAppAbbrevLowerCase with same shorthand but lower case e.g. dp</li>
+	<li>meteorUsername with your meteor username </li>
+	<li>run script "renameFolderPrefix.sh" to rename the folder prefix from sb to UniqueAppAbbrevLowerCase</li>
+</ol>
 
-run script "renameFolderPrefix.sh" to rename the folder prefix from sb to UniqueAppAbbrevLowerCase
 
 
-Povides:
-extended user class 
-basic portal page layout
-basic testing functionality
-example of advanced publication design
-organization of all sub-packages (__-portal, __-base) into single app __
-
+<h2>Povides</h2>
+<ul>
+	<li>extended user class </li>
+	<li>basic portal page layout</li>
+	<li>basic testing functionality</li>
+	<li>example of advanced publication design</li>
+	<li>organization of all sub-packages (sb-portal, sb-base) into single app sb</li>
+</ul>
