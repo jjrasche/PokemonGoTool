@@ -4,7 +4,7 @@
 
  	when a board's members are chagned, publish new members to clients
 */
-Meteor.publish("board", function (boardID) {
+Meteor.publish("board", function(boardID) {
 	var sub = this, boardColName = 'boards', userColName = 'users';
 	var boardHandle = null, memberHandle = null;
 
@@ -42,7 +42,7 @@ Meteor.publish("board", function (boardID) {
 	});
 });
 
-Meteor.publish("boardMembers", function (boardID) {
+Meteor.publish("boardMembers", function(boardID) {
 	var board = SB.Board.findOne(boardID);
 	// console.log('boardMembers: ', board);
 	if (!board) return;
@@ -53,12 +53,12 @@ Meteor.publish("boardMembers", function (boardID) {
 
 /* gameQuery is reactive as there are no extra-cursor properties the
 	the query is dependent on */
-Meteor.publish("boardGames", function (boardID) {
+Meteor.publish("boardGames", function(boardID) {
 	var board = SB.Board.findOne(boardID);
 	// console.log('boardGames: ', board);
 	if (!board) return;
 	var ret = board ? board.gameQuery() : null;
-	console.log(ret.count() + ' games for board \'' + board.name + '\'');	                
+	console.log(ret.count() + ' games for board \'' + board.name + '\'');	
 	return ret;
 });
 
@@ -72,27 +72,27 @@ war5
 
 Meteor.publishComposite('sbSquaresBoardPublication', function(boardID) {
 	return {
-	    find: function() {
-	    	console.log('sbSquaresBoardPublication', boardID, SB.Board.find({_id: boardID}).count());
-	        return SB.Board.find({_id: boardID});
-	    }
-	    ,
-	    children: [
-	        {   // publish Board users
-	            find: function(board) {
-	          		var ret = board.memberQuery();
-	          		console.log(ret.count() + ' users of board \'' + board.name + '\'');
-	                return ret
-	            }
-	        },
-	        {   // publish Board games
-	            find: function(board) {
-	                var ret = board.gameQuery();
-	          		console.log(ret.count() + ' games for board \'' + board.name + '\'');	                
-	                return ret;
-	            }
-	        }
-	    ]
+		find: function() {
+			console.log('sbSquaresBoardPublication', boardID, SB.Board.find({_id: boardID}).count());
+			return SB.Board.find({_id: boardID});
+		}
+		,
+		children: [
+			{	// publish Board users
+				find: function(board) {
+						var ret = board.memberQuery();
+						console.log(ret.count() + ' users of board \'' + board.name + '\'');
+					return ret
+				}
+			},
+			{	// publish Board games
+				find: function(board) {
+					var ret = board.gameQuery();
+						console.log(ret.count() + ' games for board \'' + board.name + '\'');	
+					return ret;
+				}
+			}
+		]
 	}
 });
 */

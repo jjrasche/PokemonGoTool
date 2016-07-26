@@ -6,9 +6,9 @@ Accounts.ui.config({
 
 Accounts._loginButtons.validateUsername = function(username) {
 	if (username.length >= 2) {
-	    return true;
+		return true;
 	} else {
-	    loginButtonsSession.errorMessage(i18n('errorMessages.usernameTooShort'));
-	    return false;
+		loginButtonsSession.errorMessage(i18n('errorMessages.usernameTooShort'));
+		return false;
 	}
 };
