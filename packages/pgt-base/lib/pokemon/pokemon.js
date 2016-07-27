@@ -6,6 +6,7 @@ PGT.namespacer('PGT', {Pokemon:
   })
 });
 
+// any ORM happens here, e.g. normalizing data
 PGT.namespacer('PGT.Pokemon', {model :
 	function(doc) {
 		// if returning necessary movesID field
@@ -25,9 +26,6 @@ _.extend(PGT.Pokemon.model.prototype, {
 			else return res;
 		});
 	},
-	_moves : function _moves() {
-		return this.moves;//PGT.Move.find({name : {$in : this.moves}}).fetch();
-	},
 	isType : function isType(type) {
 		return this.type.filter(function(t) { t.match(new RegExp(type, 'i'))}).length != 0
 	} 
@@ -38,6 +36,13 @@ _.extend(PGT.Pokemon.model.prototype, {
 _.extend(PGT.Pokemon, {
 	getNames : function getNames() {
 		return PGT.Pokemon.find({}, {fields: {name: 1}})
+	},
+	getNumbers : function getNumbers() {
+		return PGT.Pokemon.find({}, {fields: {number: 1}})
+				.fetch()
+				.map(function(p) {
+					return p.number;
+				});
 	},
 	getPokemonByName : function getPokemonByName(pokemonName) {
 		return PGT.Pokemon.findOne({name : pokemonName});

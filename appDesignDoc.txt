@@ -6,7 +6,7 @@
 		- move ratings
 		- future: track evolves and power ups
 	- pokemonFinding
-		- identify pokemon sitings for a given set over a specific amount of time
+		- identify pokemon sightings for a given set over a specific amount of time
 			- number of times / day in area
 			- likelihood to find in area
 			- spawn coordinates (need a way to group close locations)
@@ -22,8 +22,8 @@
 		pokeSearchRequest		(createRequest, serverRunRequest, getRequests)
 			- location
 			- pokesToFind []
-			- pokeSitings []
-		pokeSiting
+			- pokesightings []
+		pokesighting
 			- expirationTime
 			- lat
 			- long
@@ -32,7 +32,7 @@
 	publication design
 		- pokemonFinding Page: 
 			1) subscribe to all user's pokeSearchRequests
-			2) onChange to pokeSearchRequest.pokeSitings publish added sitings
+			2) onChange to pokeSearchRequest.pokesightings publish added sightings
 			
 		
 
@@ -42,9 +42,9 @@
 			- get coordinates from map click
 			- onCreate do initial serverSearchRequest
 				- calls API 
-				- iterates through returned sitings
-					- if unique, store and add id to pokeSearchRequest.pokeSiting[]
-					- if existing,  get id and add to pokeSearchRequest.pokeSiting[]
+				- iterates through returned sightings
+					- if unique, store and add id to pokeSearchRequest.pokesighting[]
+					- if existing,  get id and add to pokeSearchRequest.pokesighting[]
 			- feed data back to client
 
 		run serverSearchRequest
@@ -61,7 +61,7 @@
 			- cons: 
 				- Fine I'm doing a Meteor app. 
 
-		- Request will hold reference to siting to prevent duplicates in the much larger pokeSiting colleciton
+		- Request will hold reference to sighting to prevent duplicates in the much larger pokesighting colleciton
 		- should request running be handled by client
 			- NO! while this would ease server strain, it is bad because:
 				- more security holes with clients entering data
@@ -74,8 +74,8 @@
 	Constructino plan:
 	1) setup already created pokemonRaising functionality
 	2) pokemonFinding
-		- given pokeRequest --> update request and create sitings;
-		- add logic to prevent duplicating sitings
+		- given pokeRequest --> update request and create sightings;
+		- add logic to prevent duplicating sightings
 		- automate pokeRequest re-runs
 		- add input ui to create pokeSearchRequest
 			- onCreate methods to perform initial search

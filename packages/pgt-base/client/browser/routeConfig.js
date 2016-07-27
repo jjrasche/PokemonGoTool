@@ -5,6 +5,10 @@ PGT.namespacer('PGT.Router', {baseController :
 				this.subscribe('pokemon').wait();
 				this.subscribe('moves').wait();
 
+				// TODO remove after testing
+				this.subscribe('sighting').wait();
+				this.subscribe('searchRequest').wait();
+
 				// check for login
 				if (!PGT.User.user()) this.render('accessDenied');
 				else this.next();

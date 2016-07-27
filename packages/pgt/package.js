@@ -15,6 +15,7 @@ Package.onUse(function(api) {
 		,'jjrasche:pgt-user'
 		,'jjrasche:pgt-portal'
 		,'jjrasche:pgt-raising'
+		,'jjrasche:pgt-tracking'
 	], both);
 
 

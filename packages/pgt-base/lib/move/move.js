@@ -46,7 +46,6 @@ _.extend(PGT.Move, {
 		return PGT.Util.mapToOrderedList(moveList, highestDPSMoves)
 	},
 	getMovesByName : function getMovesByName(moveNames) {
-		console.log('getMovesByName: ', moveNames);
 		return this.find({name : {$in : moveNames}}).fetch();
 	},
 	getMoveIDsByName : function getMoveIDsByName(moveNames) {
@@ -55,7 +54,6 @@ _.extend(PGT.Move, {
 		});
 	},
 	getMovesByID : function getMovesByID(moveIDs) {
-		console.log('getMovesByName: ', moveIDs);
 		return this.find({_id : {$in : moveIDs}}).fetch();
 	}
 });

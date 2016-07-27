@@ -1,0 +1,12 @@
+.raiseOutput {
+	width: 80%;
+}
+
+.raiseInput {
+	margin: 1em;
+}
+
+td, th
+{
+    padding:0 0 0 10%;
+}
