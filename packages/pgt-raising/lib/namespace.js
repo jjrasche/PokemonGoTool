@@ -1,0 +1,1 @@
+// PGT.namespacer('PGT.Portal', {viewableObjectLimit : 5});

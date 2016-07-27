@@ -1,0 +1,86 @@
+/*
+
+	Feature/Page list:
+	- pokemonRaising
+		- power up possibilities
+		- move ratings
+		- future: track evolves and power ups
+	- pokemonFinding
+		- identify pokemon sitings for a given set over a specific amount of time
+			- number of times / day in area
+			- likelihood to find in area
+			- spawn coordinates (need a way to group close locations)
+			- map where select pokemon previous spawnings are shown 
+
+
+	data model
+		user.settings
+			- pokeSearchRequestSettings : {
+				recency :	
+			}
+			- pokeSearchRequest []
+		pokeSearchRequest		(createRequest, serverRunRequest, getRequests)
+			- location
+			- pokesToFind []
+			- pokeSitings []
+		pokeSiting
+			- expirationTime
+			- lat
+			- long
+			- pokeID
+
+	publication design
+		- pokemonFinding Page: 
+			1) subscribe to all user's pokeSearchRequests
+			2) onChange to pokeSearchRequest.pokeSitings publish added sitings
+			
+		
+
+
+	walk-through
+		user creates pokeSearchRequest
+			- get coordinates from map click
+			- onCreate do initial serverSearchRequest
+				- calls API 
+				- iterates through returned sitings
+					- if unique, store and add id to pokeSearchRequest.pokeSiting[]
+					- if existing,  get id and add to pokeSearchRequest.pokeSiting[]
+			- feed data back to client
+
+		run serverSearchRequest
+
+
+	design Decisions:
+		- should I do this in Meteor
+			- pros: 
+				- existing data storage mechanisms
+				- server does polling
+				- mapping libraries already integrated for improved features
+				- routing and organization 
+				- can setup on server and access anywhere
+			- cons: 
+				- Fine I'm doing a Meteor app. 
+
+		- Request will hold reference to siting to prevent duplicates in the much larger pokeSiting colleciton
+		- should request running be handled by client
+			- NO! while this would ease server strain, it is bad because:
+				- more security holes with clients entering data
+				- client session must be open to poll data
+				- still need to make same number of db calls
+		- server controls polling frequency and all requests are on the same schedule
+			- it is unnecesarily complicated for requests to dictate how often they run.
+
+
+	Constructino plan:
+	1) setup already created pokemonRaising functionality
+	2) pokemonFinding
+		- given pokeRequest --> update request and create sitings;
+		- add logic to prevent duplicating sitings
+		- automate pokeRequest re-runs
+		- add input ui to create pokeSearchRequest
+			- onCreate methods to perform initial search
+		- add mapping 
+
+
+
+*/

@@ -1,0 +1,64 @@
+<template name='pgtRaisingPageInput'>
+	<form  id='pgtRaisingPageInput' class='form-group raiseInput'>
+		<label for='pgtRaisingPagePokemonSelect'>Select list:</label>
+		<select name='pgtRaisingPagePokemonSelect' class='form-control'>
+			<option disabled='disabled' selected='selected'>Please Select</option>
+			{{#each pokemonTypes}}
+				<option value='{{this}}'>{{this}}</option>
+			{{/each}}
+		</select>
+		
+		<label for='pgtRaisingPageCpInput'>Combat Points(CP):</label>
+		<input name='pgtRaisingPageCpInput' class='form-control' type='number' placeholder='cp' value=30 >
+		
+		<label for='pgtRaisingPageStardustInput'>Stardust:</label>
+		<input name='pgtRaisingPageStardustInput' class='form-control' type='number' placeholder='stardust' value=200>
+
+		<button type='submit' class='btn btn-default'>Submit</button>
+	</form>
+</template>
+
+
+<template name='pgtRaisingPagePowerUpOutcomes'>
+	<div>
+		<center><b>Power-up Outcomes:</b></center>
+		<br>
+		<table>
+			<tr>
+				<th>Max Percent</th>
+				<th>level</th> 
+				<th>minCP</th>
+				<th>maxCP</th>
+			</tr>
+			{{#each outcomes}}
+				<tr>
+					<td>{{percentMax}}</td>
+					<td>{{level}}</td> 
+					<td>{{minCP}}</td>
+					<td>{{maxCP}}</td>
+				</tr>
+			{{/each}}
+		</table>
+	</div>
+</template>
+
+<template name='pgtRaisingPageMoveRatings'>
+	<div>
+		<center><b>Move Ratings</b></center>
+		<br>
+		<table>
+			<tr>
+				<th>Move</th>
+				<th>dps</th> 
+				<th>rating</th>
+			</tr>
+			{{#each ratings}}
+				<tr>
+					<td>{{moveName}}</td>
+					<td>{{dps}}</td> 
+					<td>{{rating}}</td>
+				</tr>
+			{{/each}}
+		</table>	
+	</div>
+</template>

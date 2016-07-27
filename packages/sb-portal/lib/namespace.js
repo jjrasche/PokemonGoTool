@@ -1,1 +1,0 @@
-// UniqueAppAbbrevUpperCase.namespacer('UniqueAppAbbrevUpperCase.Portal', {viewableObjectLimit : 5});
