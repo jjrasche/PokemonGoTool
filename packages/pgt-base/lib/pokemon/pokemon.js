@@ -8,6 +8,10 @@ PGT.namespacer('PGT', {Pokemon:
 
 PGT.namespacer('PGT.Pokemon', {model :
 	function(doc) {
+		// if returning necessary movesID field
+		if (doc.moveIDs !== undefined) {
+			this.moves = PGT.Move.getMovesByID(doc.moveIDs);
+		}
 		_.extend(this, doc);
 	}
 });
@@ -22,7 +26,7 @@ _.extend(PGT.Pokemon.model.prototype, {
 		});
 	},
 	_moves : function _moves() {
-		return PGT.Move.find({name : {$in : this.moves}}).fetch();
+		return this.moves;//PGT.Move.find({name : {$in : this.moves}}).fetch();
 	},
 	isType : function isType(type) {
 		return this.type.filter(function(t) { t.match(new RegExp(type, 'i'))}).length != 0
@@ -33,11 +37,7 @@ _.extend(PGT.Pokemon.model.prototype, {
 // static methods
 _.extend(PGT.Pokemon, {
 	getNames : function getNames() {
-		return PGT.Pokemon.find({}, {fields: {name: 1}}).fetch().map(
-			function(p) {
-				return p.name
-			}
-		)
+		return PGT.Pokemon.find({}, {fields: {name: 1}})
 	},
 	getPokemonByName : function getPokemonByName(pokemonName) {
 		return PGT.Pokemon.findOne({name : pokemonName});
@@ -97,9 +97,8 @@ var pokemonSchema = new SimpleSchema({
 		min : 0,
 	},
 	// TODO see if you can use moves collection to specify allowed values ... maybe in a custom field
-	moves : {
+	moveIDs : {
 		type : [String],
-		allowedValues : PGT.Base.moveNames,
 		minCount : 2,
 	},
 	cpData : {

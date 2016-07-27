@@ -44,6 +44,19 @@ _.extend(PGT.Move.model.prototype, {
 _.extend(PGT.Move, {
 	moveByDPS : function moveByDPS() {
 		return PGT.Util.mapToOrderedList(moveList, highestDPSMoves)
+	},
+	getMovesByName : function getMovesByName(moveNames) {
+		console.log('getMovesByName: ', moveNames);
+		return this.find({name : {$in : moveNames}}).fetch();
+	},
+	getMoveIDsByName : function getMoveIDsByName(moveNames) {
+		return this.getMovesByName(moveNames).map(function(m) {
+			return m._id;
+		});
+	},
+	getMovesByID : function getMovesByID(moveIDs) {
+		console.log('getMovesByName: ', moveIDs);
+		return this.find({_id : {$in : moveIDs}}).fetch();
 	}
 });
 

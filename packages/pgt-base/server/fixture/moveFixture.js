@@ -1,5 +1,7 @@
 // create data if data does not exist
 if (!PGT.Move.find().count()) {
+	console.log('No Moves in DB. Started to create ' + PGT.Util.getFormattedTime());
+
 	PGT.Move.insert({name : 'Acid', type : 'Poison', damage : 10, duration : 1.05, dps : 9.52});
 	PGT.Move.insert({name : 'Aerial Ace', type : 'Flying', damage : 25, duration : 2.90, dps : 8.62, energy : 4});
 	PGT.Move.insert({name : 'Air Cutter', type : 'Flying', damage : 25, duration : 3.30, dps : 7.58, energy : 4});
@@ -124,4 +126,7 @@ if (!PGT.Move.find().count()) {
 	PGT.Move.insert({name : 'Wrap', type : 'Normal', damage : 15, duration : 4.00, dps : 3.75, energy : 5});
 	PGT.Move.insert({name : 'X-Scissor', type : 'Bug', damage : 30, duration : 2.10, dps : 14.29, energy : 3});
 	PGT.Move.insert({name : 'Zen Headbutt', type : 'Psychic', damage : 15, duration : 1.05, dps : 14.29});
+
+	console.log('Finished Move creation ' + PGT.Util.getFormattedTime());
+
 }

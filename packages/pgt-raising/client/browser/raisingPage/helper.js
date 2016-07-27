@@ -46,13 +46,13 @@ Template.pgtRaisingPageMoveRatings.helpers({
 // business logic
 PGT.namespacer('PGT.Raise', {analyzePowerUpOutcomes : 
 	function analyzePowerUpOutcomes(pokemon, cp, stardust) {
-		console.log(typeof(cp), cp, typeof(stardust), stardust);
+		// console.log(typeof(cp), cp, typeof(stardust), stardust);
 		var cpData = pokemon.cpData;
 		var dataMatch = cpData.filter(function(d) {  
 			return(d.stardust === stardust && d.maxCP > cp && d.minCP < cp)
 		});
 		if (!dataMatch) throw "no data found for stardust (" + stardust + ") and cp (" + cp + ")";
-		console.log('analyzePowerUpOutcomes: ', pokemon, cpData, dataMatch);
+		// console.log('analyzePowerUpOutcomes: ', pokemon, cpData, dataMatch);
 		
 		handlePowerUpResults(cp, dataMatch);
 	}
@@ -69,7 +69,7 @@ var handlePowerUpResults = function handlePowerUpResults(cp, dataMatch) {
 		});
 
 	});	
-	console.log('handlePowerUpResults',dataMatch, sessionData);	
+	// console.log('handlePowerUpResults',dataMatch, sessionData);	
 	Session.set('powerUpOutcomes', sessionData);
 }
 
@@ -77,7 +77,7 @@ var handlePowerUpResults = function handlePowerUpResults(cp, dataMatch) {
 PGT.namespacer('PGT.Raise', {analyzeMoveRatings : 
 	function analyzeMoveRatings(p) {
 		var sessionData = []
-		var moves = p._moves().sort(function(m1, m2) {
+		var moves = p.moves.sort(function(m1, m2) {
 			if(m1.isQuickMove() && m2.isChargeMove())
 				return false;
 			else if(m1.isChargeMove() && m2.isQuickMove())
@@ -91,7 +91,8 @@ PGT.namespacer('PGT.Raise', {analyzeMoveRatings :
 			sessionData.push({
 				moveName : m.name,
 				dps : m.dps,
-				rating : m.getRating(p)
+				rating : m.getRating(p),
+				category : m.isQuickMove() ? 'quick' : 'charge'
 			});
 		});
 		console.log('analyzeMoveRatings: ',sessionData)

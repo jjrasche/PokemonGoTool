@@ -36,3 +36,11 @@ PGT.namespacer('PGT.Util', {calcCpPercentOfMax :
 });
 
 
+PGT.namespacer('PGT.Util', {getFormattedTime :
+	function getTime(map) {
+		var d = new Date();
+		return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + ':' + d.getMilliseconds();
+	}
+});
+
+

@@ -4,7 +4,7 @@
 		<select name='pgtRaisingPagePokemonSelect' class='form-control'>
 			<option disabled='disabled' selected='selected'>Please Select</option>
 			{{#each pokemonTypes}}
-				<option value='{{this}}'>{{this}}</option>
+				<option value='{{name}}'>{{name}}</option>
 			{{/each}}
 		</select>
 		
@@ -26,9 +26,9 @@
 		<table>
 			<tr>
 				<th>Max Percent</th>
-				<th>level</th> 
-				<th>minCP</th>
-				<th>maxCP</th>
+				<th>Level</th> 
+				<th>MinCP</th>
+				<th>MaxCP</th>
 			</tr>
 			{{#each outcomes}}
 				<tr>
@@ -49,12 +49,14 @@
 		<table>
 			<tr>
 				<th>Move</th>
-				<th>dps</th> 
-				<th>rating</th>
+				<th>Category</th>
+				<th>DPS</th> 
+				<th>Rating</th>
 			</tr>
 			{{#each ratings}}
 				<tr>
 					<td>{{moveName}}</td>
+					<td>{{category}}</td>
 					<td>{{dps}}</td> 
 					<td>{{rating}}</td>
 				</tr>
